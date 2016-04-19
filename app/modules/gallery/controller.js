@@ -1,16 +1,23 @@
 class GalleryController {
-  constructor($firebaseAuth, GalleryService) {
+  constructor(GalleryService, $timeout) {
     this._GalleryService = GalleryService;
 
+
     this.list = this._GalleryService.all();
+
+    this.newImage = this._GalleryService.new();
+
+    this.sizes = this.getSizes();
+    console.log(this.sizes);
+  }
+
+  addImage() {
+    this._GalleryService.add(this.newImage);
     this.newImage = this._GalleryService.new();
   }
 
-  /* STEP 1 - This should call the add method on your
-    GalleryService and pass in the newImage you're
-    trying to create */
-
-  addImage() {
+  getSizes() {
+    return this._GalleryService.sizes;
   }
 }
 

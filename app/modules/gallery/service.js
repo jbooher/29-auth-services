@@ -1,11 +1,11 @@
 class GalleryService {
-  constructor($firebaseArray, $firebaseAuth, $timeout) {
+  constructor($q, $firebaseArray, $firebaseAuth, $timeout) {
+    this._$q = $q;
     this._$firebaseArray = $firebaseArray;
 
-    /* STEP 1 - CHANGE THE LINE BELOW! Add your Firebase URL */
-    this.ref = new Firebase("your URL goes here");
+    this.ref = new Firebase("https://jb-gallery.firebaseio.com/");
     this.auth = $firebaseAuth(this.ref);
-    $timeout(this.verifyLogin.bind(this), 1000);
+    this.verifyLogin();
   }
 
   verifyLogin() {
@@ -20,29 +20,28 @@ class GalleryService {
 
   loginUser(authData) {
     this.user = authData;
-    this.gallery = this._$firebaseArray(this.ref.child('users').child(authData.uid));
+    this.gallery = this._$firebaseArray(this.ref.child('users').child(authData.uid).child('images'));
+    this.sizes = this._$firebaseArray(this.ref.child('sizes'));
   }
 
   currentUser() {
     return this.user;
   }
 
-  /* STEP 2 - This function should return a new object with
-    the default information for your gallery item. It should
-    have a name property and an image property, both set to
-    empty strings.
-  */
   new() {
+    return {
+      name: "",
+      image: "",
+      size: "Medium"
+    }
   }
 
   all() {
-    return this.gallery;
+      return this.gallery;
   }
 
-  /* STEP 3 - This function should add the given image object
-    to your Firebase. Remember, this.gallery is your Firebase
-    Array */
   add(item) {
+    this.gallery.$add(item);
   }
 
 }

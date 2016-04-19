@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+ul {
+  list-style: none; }
+
+input[type="submit"] {
+  background: none;
+  border: none; }
+
+body {
+  background: rgba(0, 0, 0, 0.5);
+  font-family: Verdana; }
+
+.container {
+  width: 80%;
+  margin: 0 auto; }
+
+.header {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem; }
+  .header .button {
+    font-size: 2rem;
+    padding: 10px 20px;
+    background: linear-gradient(#0f0, #0b0, #070, #030);
+    border: 1px solid #000;
+    border-radius: 50px;
+    color: #eee; }
+    .header .button:hover {
+      background: linear-gradient(#6f6, #0f0, #0b0, #040); }
+    .header .button::-webkit-input-placeholder {
+      color: #eee; }
+
+.gallery {
+  margin-left: -10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start; }
+  .gallery--image {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #000;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.25rem;
+    color: #eee; }
+    .gallery--image img {
+      width: inherit;
+      border-radius: 10px 10px 0 0; }
+    .gallery--image span {
+      margin: 10px 0; }
+
+.Small {
+  width: 100px; }
+
+.Medium {
+  width: 200px; }
+
+.Large {
+  width: 400px; }
